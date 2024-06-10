@@ -4,7 +4,6 @@ import 'package:ecommerce_ui/resource/constant/Texttheme.dart';
 import 'package:ecommerce_ui/resource/constant/appcolors.dart';
 import 'package:ecommerce_ui/screen/onboarding/welcomeview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 
 class Sliderview extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:ecommerce_ui/Function/userfunction.dart';
+import 'package:ecommerce_ui/Function/authfunction/Errorhandler.dart';
 import 'package:ecommerce_ui/components/Btnwidget/Perimerybtn.dart';
 import 'package:ecommerce_ui/components/Textfiled/Preimerytextfield.dart';
 import 'package:ecommerce_ui/main.dart';
@@ -64,15 +64,15 @@ class _SignupviewState extends State<Signupview> {
               Perimerybtn(
                   name: "Login",
                   bgcol: Classhandler.color.black,
-                  onPressed: () {
-                    UserFunction().usersignup(
-                      Usermodel(
-                          name: _username.text.trim(),
-                          email: _Email.text.trim(),
-                          password: _Password.text.toString()),
-                    );
+                  onPressed: () async {
+                    // await authhandler(context).signup(
+                    //   Usermodel(
+                    //       name: _username.text.trim(),
+                    //       email: _Email.text.trim(),
+                    //       password: _Password.text.toString()),
+                    // );
                   },
-                  isexpanded: true)
+                  isexpanded: true)    
             ]),
           ],
         ),

@@ -2,8 +2,8 @@ import 'package:ecommerce_ui/main.dart';
 import 'package:ecommerce_ui/resource/constant/Texttheme.dart';
 import 'package:ecommerce_ui/resource/constant/appcolors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class Perimerybtn extends StatelessWidget {
   String name;
   String? img;

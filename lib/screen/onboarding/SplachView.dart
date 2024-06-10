@@ -1,4 +1,6 @@
+import 'package:ecommerce_ui/Function/authfunction/Shared_preferences.dart';
 import 'package:ecommerce_ui/resource/constant/Getappimg.dart';
+import 'package:ecommerce_ui/screen/home/Homeview.dart';
 import 'package:ecommerce_ui/screen/onboarding/Sliderview.dart';
 import 'package:flutter/material.dart';
 
@@ -16,14 +18,27 @@ class _SplachviewState extends State<Splachview> {
     splach();
   }
 
+  
+
   splach() {
-    Future.delayed(
-        Duration(seconds: 4),
-        () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Sliderview(),
-            )));
+    final userdata = Sharedpref.getpref(Sharedpref.useridkey);
+    if (userdata == null) {
+      Future.delayed(
+          Duration(seconds: 4),
+          () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Sliderview(),
+              )));
+    } else {
+      Future.delayed(
+          Duration(seconds: 4),
+          () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Homeview(),
+              )));
+    }
   }
 
   @override
@@ -33,6 +48,8 @@ class _SplachviewState extends State<Splachview> {
     return Scaffold(
       body: ListView(
         children: [
+          
+          
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,

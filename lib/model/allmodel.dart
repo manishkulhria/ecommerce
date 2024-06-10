@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 
 class Usermodel {
   String? id;
@@ -20,7 +19,11 @@ class Usermodel {
         password: password ?? this.password);
   }
 
-  Usermodel.fromojson(Map<String, dynamic> json, this.id)
-      : email = json["email"],
+  Usermodel.fromojson(Map<String, dynamic> json)
+      : id = json["id"],
+       email = json["email"],
         password = json["password"];
 }
+
+// ========================
+
