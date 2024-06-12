@@ -1,6 +1,6 @@
-import 'package:ecommerce_ui/Function/authfunction/Errorhandler.dart';
 import 'package:ecommerce_ui/components/Btnwidget/Perimerybtn.dart';
 import 'package:ecommerce_ui/components/Textfiled/Preimerytextfield.dart';
+import 'package:ecommerce_ui/controller/usercontroller.dart';
 import 'package:ecommerce_ui/main.dart';
 import 'package:ecommerce_ui/model/allmodel.dart';
 import 'package:flutter/material.dart';
@@ -65,14 +65,14 @@ class _SignupviewState extends State<Signupview> {
                   name: "Login",
                   bgcol: Classhandler.color.black,
                   onPressed: () async {
-                    // await authhandler(context).signup(
-                    //   Usermodel(
-                    //       name: _username.text.trim(),
-                    //       email: _Email.text.trim(),
-                    //       password: _Password.text.toString()),
-                    // );
+                    final data = Usermodel(
+                        name: _username.text.trim(), email: _Email.text.trim());
+                    await Usercontroller().signUp({
+                      "user": data.tojson(),
+                      "password": _Password.text.trim()
+                    }, context);
                   },
-                  isexpanded: true)    
+                  isexpanded: true)
             ]),
           ],
         ),

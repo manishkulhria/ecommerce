@@ -1,9 +1,11 @@
-import 'package:ecommerce_ui/Function/authfunction/userfunction.dart';
 import 'package:ecommerce_ui/components/Btnwidget/Perimerybtn.dart';
 import 'package:ecommerce_ui/components/Textfiled/Preimerytextfield.dart';
+import 'package:ecommerce_ui/controller/usercontroller.dart';
 import 'package:ecommerce_ui/main.dart';
+import 'package:ecommerce_ui/model/allmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -37,15 +39,25 @@ class _LoginViewState extends State<LoginView> {
             Gap(20),
             Perimerytextfield(txt: "Password", controller: _Password),
             Gap(50),
-            Row(children: [
-              Perimerybtn(
-                  name: "Login",
-                  onPressed: () {
-                    // UserFunction()
-                    //     .login(_Email.text.trim(), _Password.text.trim());
-                  },
-                  isexpanded: true)
-            ]),
+            Consumer<Usercontroller>(
+              builder: (context, user, child) {
+                return Row(children: [
+                  Perimerybtn(
+                      loadingvalue: true,
+                      name: "Login",
+                      onPressed: () {
+                        final data = Usermodel(
+                            name: _Email.text.trim(),
+                            email: _Email.text.trim());
+                        user.Login({
+                          "user": data.tojson(),
+                          "password": _Password.text.trim()
+                        }, context);
+                      },
+                      isexpanded: true)
+                ]);
+              },
+            ),
             Gap(10),
             Row(children: [
               Expanded(child: Divider()),

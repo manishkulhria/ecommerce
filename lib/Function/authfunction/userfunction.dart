@@ -54,11 +54,11 @@ class UserFunction extends api {
   Future post(path, Map<String, dynamic> data) async {
     try {
       if (path is CollectionReference) {
-        return await path.add(path);
+        return await path.add(data);
       } else if (path is DocumentReference) {
-        return await path.set(path);
+        return await path.set(data);
       } else if (path is String) {
-        return await http.post(Uri.parse(path), body: data);
+        return await http.post(Uri.parse(data["uri"]), body: data);
       }
     } catch (e) {
       rethrow;

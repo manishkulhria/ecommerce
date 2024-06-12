@@ -18,8 +18,6 @@ class _SplachviewState extends State<Splachview> {
     splach();
   }
 
-  
-
   splach() {
     final userdata = Sharedpref.getpref(Sharedpref.useridkey);
     if (userdata == null) {

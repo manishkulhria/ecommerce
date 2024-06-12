@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class Perimerybtn extends StatelessWidget {
   String name;
   String? img;
+  bool loadingvalue;
   bool isexpanded;
   Function onPressed;
   Color? col, bgcol, txtcol;
@@ -15,6 +16,7 @@ class Perimerybtn extends StatelessWidget {
       required this.name,
       this.isexpanded = false,
       required this.onPressed,
+      this.loadingvalue = false,
       this.col,
       this.img,
       this.bgcol,
@@ -47,6 +49,10 @@ class Perimerybtn extends StatelessWidget {
               .fs20medium()
               .copyWith(color: txtcol != null ? txtcol : colors.white),
         ));
-    return isexpanded ? Expanded(child: btn) : btn;
+    return loadingvalue == false
+        ? CircularProgressIndicator()
+        : isexpanded
+            ? Expanded(child: btn)
+            : btn;
   }
 }
